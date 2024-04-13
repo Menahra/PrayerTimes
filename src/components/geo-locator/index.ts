@@ -1,0 +1,1 @@
+export { GeoLocator } from "./GeoLocator";

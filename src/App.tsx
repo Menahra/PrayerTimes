@@ -1,1 +1,3 @@
-export const App = () => <span>Hello World</span>;
+import { GeoLocator } from "./components/geo-locator";
+
+export const App = () => <GeoLocator />;
