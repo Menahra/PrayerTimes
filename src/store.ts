@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 type Store = {
-	/** 
-	 * the coordinates of the location for which the times should be loaded 
-	 * 
+	/**
+	 * the coordinates of the location for which the times should be loaded
+	 *
 	 * the first value represents the latitude
 	 * the second the longitude
 	 */
