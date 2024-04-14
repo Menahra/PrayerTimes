@@ -45,5 +45,13 @@ export const ReversedGeoLocatedText = ({
 		);
 	}
 
-	return undefined;
+	return (
+		<Button
+			type="text"
+			onClick={() => onUndoLocationClick}
+			style={{ width: "24px", height: "24px" }}
+		>
+			Failed to locate you. Click here to choose your location manually.
+		</Button>
+	);
 };

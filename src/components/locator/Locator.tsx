@@ -4,6 +4,7 @@ import { useStore } from "../../store";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { ReversedGeoLocatedText } from "./ReversedGeoLocatedText";
+import { ManualLocationSelect } from "./manual-location-select/ManualLocationSelect";
 
 export const Locator = () => {
 	const [showCountryAndCitySelection, setShowCountryAndCitySelection] =
@@ -26,6 +27,5 @@ export const Locator = () => {
 		);
 	}
 
-	// return two auto completes
-	return <span>Autocompletes</span>;
+	return <ManualLocationSelect />;
 };
