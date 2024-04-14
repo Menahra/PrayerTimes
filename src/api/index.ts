@@ -1,1 +1,2 @@
-export { useGetCountries } from "./getCountries";
+export { useGetCountries } from "./useGetCountries";
+export {useGetReverseGeocoding} from './useGetReverseGeocoding';
