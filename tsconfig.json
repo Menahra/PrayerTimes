@@ -16,7 +16,7 @@
   },
   "include": [
       "./src",
-      "tests/vitest.setup.ts"
+      "./tests"
   ],
   "exclude": [
       "./node_modules"

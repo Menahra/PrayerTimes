@@ -3,6 +3,7 @@ import { useGetCitiesByCountry } from "../../../api";
 import { AutoComplete, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import type { CityByCountryObject } from "../../../api/useGetCitiesByCountry";
+import { LoadingIndicator } from "../../loading-indicator/LoadingIndicator";
 
 export type CityByCountrySelectOption = {
 	value: string;
@@ -50,7 +51,7 @@ export const CityByCountrySelect = ({
 	);
 
 	if (isLoadingCountries) {
-		return <Spin indicator={<LoadingOutlined spin />} />;
+		return <LoadingIndicator />;
 	}
 
 	return (

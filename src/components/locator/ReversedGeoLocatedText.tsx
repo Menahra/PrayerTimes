@@ -2,6 +2,7 @@ import { Button, Flex, Spin, Typography } from "antd";
 import { CloseOutlined, LoadingOutlined } from "@ant-design/icons";
 import { MdLocationPin } from "react-icons/md";
 import { useGetReverseGeocoding } from "../../api";
+import { LoadingIndicator } from "../loading-indicator/LoadingIndicator";
 
 const { Title } = Typography;
 
@@ -23,7 +24,7 @@ export const ReversedGeoLocatedText = ({
 	);
 
 	if (isFetching) {
-		return <Spin indicator={<LoadingOutlined spin />} />;
+		return <LoadingIndicator />;
 	}
 
 	if (isSuccess) {

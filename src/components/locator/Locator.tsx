@@ -5,6 +5,7 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { ReversedGeoLocatedText } from "./ReversedGeoLocatedText";
 import { ManualLocationSelect } from "./manual-location-select/ManualLocationSelect";
+import { LoadingIndicator } from "../loading-indicator/LoadingIndicator";
 
 export const Locator = () => {
 	const [showCountryAndCitySelection, setShowCountryAndCitySelection] =
@@ -14,7 +15,7 @@ export const Locator = () => {
 	const { coordinates } = useStore();
 
 	if (userLocationIsLoading) {
-		return <Spin indicator={<LoadingOutlined spin />} />;
+		return <LoadingIndicator />;
 	}
 
 	if (coordinates !== null && !showCountryAndCitySelection) {

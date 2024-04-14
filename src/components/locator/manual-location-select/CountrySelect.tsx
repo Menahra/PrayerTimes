@@ -2,6 +2,7 @@ import { AutoComplete, Spin } from "antd";
 import { useGetCountries } from "../../../api";
 import { useMemo, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingIndicator } from "../../loading-indicator/LoadingIndicator";
 
 export type Option = {
 	value: string;
@@ -42,7 +43,7 @@ export const CountrySelect = ({
 	);
 
 	if (isLoadingCountries) {
-		return <Spin indicator={<LoadingOutlined spin />} />;
+		return <LoadingIndicator />;
 	}
 
 	return (
