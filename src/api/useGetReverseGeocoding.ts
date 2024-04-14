@@ -23,7 +23,7 @@ export const useGetReverseGeocoding = (longitude: number , latitude: number) => 
       url.searchParams.append('lat', latitude.toString());
       url.searchParams.append('lon', longitude.toString());
       url.searchParams.append('format', 'json');
-      url.searchParams.append('apiKey', '5b0d2a9fe1dc4b8fa983305551bc07c3');
+      url.searchParams.append('apiKey', import.meta.env.VITE_GEOAPIFY_API_KEY);
 
       const { data } = await axios.get(url.href);
 
