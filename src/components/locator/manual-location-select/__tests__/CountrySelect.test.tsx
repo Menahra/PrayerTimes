@@ -5,6 +5,7 @@ import { http } from "msw";
 import { render, waitFor } from "@testing-library/react";
 import { TestQueryWrapper } from "../../../../../tests/TestQueryWrapper";
 import { CountrySelect } from "../CountrySelect";
+import { getCountriesResponseMock } from "../../../../api/mocks";
 
 describe("CountrySelect", () => {
 	const user = userEvent.setup();
@@ -15,49 +16,7 @@ describe("CountrySelect", () => {
 		server.use(
 			http.get("*/restcountries.com/v3.1/all?fields=name,cca2", () => {
 				requestMockFn();
-				return new Response(
-					JSON.stringify([
-						{
-							cca2: "DZ",
-							name: {
-								common: "Algeria",
-								official: "Algeria",
-								nativeName: {
-									ar: {
-										common: "Algeria",
-										official: "Algeria",
-									},
-								},
-							},
-						},
-						{
-							cca2: "EN",
-							name: {
-								common: "England",
-								official: "England",
-								nativeName: {
-									en: {
-										common: "England",
-										official: "England",
-									},
-								},
-							},
-						},
-						{
-							cca2: "SK",
-							name: {
-								common: "Slovakia",
-								official: "Slovakia",
-								nativeName: {
-									en: {
-										common: "Slovakia",
-										official: "Slovakia",
-									},
-								},
-							},
-						},
-					]),
-				);
+				return new Response(JSON.stringify(getCountriesResponseMock));
 			}),
 		);
 	});

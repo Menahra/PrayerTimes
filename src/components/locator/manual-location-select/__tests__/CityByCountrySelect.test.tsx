@@ -5,6 +5,7 @@ import { CityByCountrySelect } from "../CityByCountrySelect";
 import { TestQueryWrapper } from "../../../../../tests/TestQueryWrapper";
 import { server } from "../../../../../tests/server";
 import { http } from "msw";
+import { getCitiesByCountryResponseMock } from "../../../../api/mocks";
 
 describe("CityByCountrySelect", () => {
 	const user = userEvent.setup();
@@ -14,43 +15,7 @@ describe("CityByCountrySelect", () => {
 		server.use(
 			http.get(`*/api.apilayer.com/geo/country/cities/${countryCode}`, () => {
 				requestMock();
-				return new Response(
-					JSON.stringify([
-						{
-							geo_id: 1,
-							latitude: 1,
-							longitude: 1,
-							name: "first city",
-							state_or_region: "first state",
-							country: {
-								code: "DZ",
-								name: "Algeria",
-							},
-						},
-						{
-							geo_id: 2,
-							latitude: 2,
-							longitude: 2,
-							name: "second city",
-							state_or_region: "first state",
-							country: {
-								code: "EN",
-								name: "England",
-							},
-						},
-						{
-							geo_id: 3,
-							latitude: 3,
-							longitude: 3,
-							name: "third city",
-							state_or_region: "first state",
-							country: {
-								code: "SK",
-								name: "Slovakia",
-							},
-						},
-					]),
-				);
+				return new Response(JSON.stringify(getCitiesByCountryResponseMock));
 			}),
 		);
 	});
