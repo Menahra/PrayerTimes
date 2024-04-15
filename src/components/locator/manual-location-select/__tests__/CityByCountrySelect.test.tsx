@@ -13,7 +13,6 @@ describe("CityByCountrySelect", () => {
 	beforeEach(() => {
 		server.use(
 			http.get(`*/api.apilayer.com/geo/country/cities/${countryCode}`, () => {
-				console.log("yess");
 				requestMock();
 				return new Response(
 					JSON.stringify([
@@ -59,8 +58,8 @@ describe("CityByCountrySelect", () => {
 		requestMock.mockClear();
 	});
 
-	it("renders a loading bar while loading the request", () => {
-		const { getByRole } = render(
+	it("renders a loading bar while loading the request", async () => {
+		const { getByRole, queryByRole } = render(
 			<TestQueryWrapper>
 				<CityByCountrySelect
 					countryCode={countryCode}
@@ -69,7 +68,13 @@ describe("CityByCountrySelect", () => {
 			</TestQueryWrapper>,
 		);
 
-		expect(getByRole("img")).toBeInTheDocument();
+		const loadingElement = getByRole("img");
+		expect(loadingElement).toBeInTheDocument();
+		expect(loadingElement).toHaveAccessibleName("loading");
+
+		await waitFor(() => expect(requestMock).toHaveBeenCalledTimes(1));
+
+		expect(queryByRole("img")).toBeNull();
 	});
 
 	it("renders a combobox after the request is finished", async () => {
@@ -142,11 +147,12 @@ describe("CityByCountrySelect", () => {
 	});
 
 	it("can select a value and the value gets passed to the select", async () => {
+		const onSelectMock = vi.fn();
 		const { getByRole, getByText } = render(
 			<TestQueryWrapper>
 				<CityByCountrySelect
 					countryCode={countryCode}
-					onCityByCountrySelect={vi.fn()}
+					onCityByCountrySelect={onSelectMock}
 				/>
 			</TestQueryWrapper>,
 		);
@@ -158,5 +164,12 @@ describe("CityByCountrySelect", () => {
 		await user.click(comboBox);
 		await user.click(getByText("second city"));
 		expect(comboBox).toHaveValue("2");
+
+		expect(onSelectMock).toHaveBeenCalledWith({
+			value: "2",
+			label: "second city",
+			latitude: 2,
+			longitude: 2,
+		});
 	});
 });
