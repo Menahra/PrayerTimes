@@ -1,5 +1,5 @@
-import { Button, Flex, Spin, Typography } from "antd";
-import { CloseOutlined, LoadingOutlined } from "@ant-design/icons";
+import { Button, Flex, Typography } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
 import { MdLocationPin } from "react-icons/md";
 import { useGetReverseGeocoding } from "../../api";
 import { LoadingIndicator } from "../loading-indicator/LoadingIndicator";
@@ -47,11 +47,7 @@ export const ReversedGeoLocatedText = ({
 	}
 
 	return (
-		<Button
-			type="text"
-			onClick={() => onUndoLocationClick}
-			style={{ width: "24px", height: "24px" }}
-		>
+		<Button type="text" onClick={() => onUndoLocationClick()}>
 			Failed to locate you. Click here to choose your location manually.
 		</Button>
 	);

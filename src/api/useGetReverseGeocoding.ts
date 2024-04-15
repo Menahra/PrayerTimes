@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 /** @see https://apidocs.geoapify.com/docs/geocoding/reverse-geocoding/#api */
-type UseGetReverseGeocodingReturnType = {
+export type UseGetReverseGeocodingReturnType = {
 	query: {
 		lat: number;
 		lon: number;

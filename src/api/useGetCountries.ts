@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 /** @see https://gitlab.com/restcountries/restcountries/-/blob/master/FIELDS.md */
-type RestCountryWithNameAndCCA2 = {
+export type RestCountryWithNameAndCCA2 = {
 	/** two letter code representing the country */
 	cca2: string;
 	/** some information about the name of the country */

@@ -1,4 +1,6 @@
-export const getCitiesByCountryResponseMock = [
+import type { CityByCountryObject } from "../useGetCitiesByCountry";
+
+export const getCitiesByCountryResponseMock: CityByCountryObject[] = [
   {
     geo_id: 1,
     latitude: 1,

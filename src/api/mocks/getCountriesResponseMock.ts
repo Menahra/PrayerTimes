@@ -1,4 +1,6 @@
-export const getCountriesResponseMock = [
+import type { RestCountryWithNameAndCCA2 } from "../useGetCountries";
+
+export const getCountriesResponseMock: RestCountryWithNameAndCCA2[] = [
   {
     cca2: "DZ",
     name: {
