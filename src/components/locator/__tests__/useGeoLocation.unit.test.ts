@@ -9,7 +9,7 @@ describe('useGeoLocation', () => {
       ...global.navigator,
       geolocation: {
         getCurrentPosition: vi.fn()
-          .mockImplementationOnce((success, error) => Promise.resolve(error({
+          .mockImplementationOnce((_success, error) => Promise.resolve(error({
             code: 1,
             message: 'GeoLocation Error',
         }))),

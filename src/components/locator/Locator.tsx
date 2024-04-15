@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useGeoLocation } from "./useGeoLocation";
 import { useStore } from "../../store";
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 import { ReversedGeoLocatedText } from "./ReversedGeoLocatedText";
 import { ManualLocationSelect } from "./manual-location-select/ManualLocationSelect";
 import { LoadingIndicator } from "../loading-indicator/LoadingIndicator";

@@ -14,7 +14,7 @@ describe("CountrySelect", () => {
 
 	beforeEach(() => {
 		server.use(
-			http.get("*/restcountries.com/v3.1/all?fields=name,cca2", () => {
+			http.get("*/restcountries.com/v3.1/all*", () => {
 				requestMockFn();
 				return new Response(JSON.stringify(getCountriesResponseMock));
 			}),
