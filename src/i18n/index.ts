@@ -1,1 +1,1 @@
-export { LocalizationProvider } from './LocalizationProvider';
+export { LocalizationProvider } from "./LocalizationProvider";

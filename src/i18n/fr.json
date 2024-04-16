@@ -1,13 +1,13 @@
 {
-  "cityByCountrySelect": {
-    "noMatches": "Aucune ville trouvée",
-    "placeholder": "Veuillez choisir une ville"
-  },
-  "countrySelect": {
-    "noMatches": "Aucune pays trouvé",
-    "placeholder": "Veuillez choisir un pays"
-  },
-  "reversedGeoLocatedText": {
-    "fallbackText": "Nous n'avons pas réussi à vous localiser. Cliquez ici pour choisir votre emplacement manuellement"
-  }
+	"cityByCountrySelect": {
+		"noMatches": "Aucune ville trouvée",
+		"placeholder": "Veuillez choisir une ville"
+	},
+	"countrySelect": {
+		"noMatches": "Aucune pays trouvé",
+		"placeholder": "Veuillez choisir un pays"
+	},
+	"reversedGeoLocatedText": {
+		"fallbackText": "Nous n'avons pas réussi à vous localiser. Cliquez ici pour choisir votre emplacement manuellement"
+	}
 }
