@@ -122,4 +122,25 @@ describe("CountrySelect", () => {
 			label: "Algeria",
 		});
 	});
+
+	it("can clear the value via the x button which shows on hover", async () => {
+		const onCountrySelectMock = vi.fn();
+		const { findByLabelText, getByRole, getByText } = render(
+			<TestQueryWrapper>
+				<CountrySelect onSelectCountry={onCountrySelectMock} />
+			</TestQueryWrapper>,
+		);
+
+		await waitFor(() => expect(requestMockFn).toHaveBeenCalledTimes(1));
+
+		const comboBox = getByRole("combobox");
+
+		await user.click(comboBox);
+		await user.click(getByText("Algeria"));
+
+		await user.hover(comboBox);
+		const clearButton = await findByLabelText("close-circle");
+		await user.click(clearButton);
+		expect(onCountrySelectMock).toHaveBeenCalledWith(undefined);
+	});
 });

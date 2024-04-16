@@ -137,4 +137,28 @@ describe("CityByCountrySelect", () => {
 			longitude: 2,
 		});
 	});
+
+	it("can clear the value via the x button which shows on hover", async () => {
+		const onSelectMock = vi.fn();
+		const { findByLabelText, getByRole, getByText } = render(
+			<TestQueryWrapper>
+				<CityByCountrySelect
+					countryCode={countryCode}
+					onCityByCountrySelect={onSelectMock}
+				/>
+			</TestQueryWrapper>,
+		);
+
+		await waitFor(() => expect(requestMock).toHaveBeenCalledTimes(1));
+
+		const comboBox = getByRole("combobox");
+
+		await user.click(comboBox);
+		await user.click(getByText("second city"));
+
+		await user.hover(comboBox);
+		const clearButton = await findByLabelText("close-circle");
+		await user.click(clearButton);
+		expect(onSelectMock).toHaveBeenCalledWith(undefined);
+	});
 });

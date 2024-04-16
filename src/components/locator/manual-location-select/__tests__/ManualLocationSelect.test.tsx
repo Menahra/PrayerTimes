@@ -5,7 +5,7 @@ import {
 	getCitiesByCountryResponseMock,
 	getCountriesResponseMock,
 } from "../../../../api/mocks";
-import { render, renderHook, waitFor } from "@testing-library/react";
+import { getByRole, render, renderHook, waitFor } from "@testing-library/react";
 import { TestQueryWrapper } from "../../../../../tests/TestQueryWrapper";
 import { ManualLocationSelect } from "../ManualLocationSelect";
 import userEvent from "@testing-library/user-event";
@@ -86,7 +86,7 @@ describe("ManualLocationSelect", () => {
 
 	it("when selecting a city the state is updated with its coordinates", async () => {
 		const { result } = renderHook(() => useStore());
-		const { getAllByRole, getByText } = render(
+		const { getAllByRole, getByRole, getByText } = render(
 			<TestQueryWrapper>
 				<ManualLocationSelect />
 			</TestQueryWrapper>,
@@ -108,5 +108,9 @@ describe("ManualLocationSelect", () => {
 		await user.click(getByText("second city"));
 
 		expect(result.current.coordinates).toEqual([2, 2]);
+
+		await user.clear(cityComboBox);
+
+		expect(result.current.coordinates).toBeNull();
 	});
 });
