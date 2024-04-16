@@ -6,7 +6,7 @@ This project provides a web app which displays islamic prayer times for differen
 
 The following list contains features which should be included (but not necessarily in this order) in upcoming months
 
-- coverage report in github, ensure a minimum coverage of 80%
+- replace [AutoComplete](https://ant.design/components/auto-complete) by [Select](https://ant.design/components/select) as it fits better to the use case
 - add an express backend which nightly fetches data for countries, cities to reduce loading times while using the app
 - instead of showing loading indicators show skeletons to improve perceived performance
 - add a select for the different prayer times methods
