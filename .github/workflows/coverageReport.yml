@@ -9,7 +9,7 @@ jobs:
 
     permissions:
       # Required to checkout the code
-      contents: read
+      contents: write
       # Required to put a comment into the pull-request
       pull-requests: write
 
@@ -22,7 +22,7 @@ jobs:
       - name: "Install Deps"
         run: npm install
       - name: "🧪 test code"
-        run: npm run test --coverage.enabled true
+        run: npm run test:coverage
       - name: "📋 Report Coverage"
         # Set if: always() to also generate the report if tests are failing
         # Only works if you set `reportOnFailure: true` in your vite config as specified above
