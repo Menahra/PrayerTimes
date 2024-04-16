@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vitest/config';
+import { defineConfig, configDefaults } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
@@ -16,10 +16,18 @@ export default defineConfig({
     environment: 'happy-dom',
     globals: false,
     setupFiles: './tests/vitest.setup.ts',
+    exclude: [
+      ...configDefaults.exclude,
+      'src/index.tsx'
+    ],
     // @see https://github.com/marketplace/actions/vitest-coverage-report
     coverage: {
       reporter: ['text', 'json-summary', 'json'],
-      reportOnFailure: true
-    }
+      reportOnFailure: true,
+      exclude: [
+        ...(configDefaults.coverage.exclude ?? []),
+        'src/index.tsx'
+      ]
+    },
   },
 });
