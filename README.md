@@ -14,5 +14,4 @@ The following list contains features which should be included (but not necessari
 - add possibility to export prayertimes for current location for this day/ current month/ year
 - add mobile support
 - instead of directly trying to locate the user, show initially the comboboxes for city and country and add a locate me button next to them
-- introduce i18next (support at the beginning only some langugages: de, en, fr)
 - instead of relying on [aladhan prayer times](https://aladhan.com/prayer-times-api) define the calculations ourselves
