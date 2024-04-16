@@ -16,5 +16,10 @@ export default defineConfig({
     environment: 'happy-dom',
     globals: false,
     setupFiles: './tests/vitest.setup.ts',
+    // @see https://github.com/marketplace/actions/vitest-coverage-report
+    coverage: {
+      reporter: ['text', 'json-summary', 'json'],
+      reportOnFailure: true
+    }
   },
 });
