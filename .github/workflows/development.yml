@@ -93,4 +93,8 @@ jobs:
           key: ${{ github.sha }}
 
       - name: "🧪 test code"
-        run: npm run test
+        run: npm run test --coverage.enabled true
+
+      - name: "Report coverage"
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2
