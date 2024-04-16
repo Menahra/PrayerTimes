@@ -1,6 +1,7 @@
 import { Button, Flex, Typography } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { MdLocationPin } from "react-icons/md";
+import { useT } from "talkr";
 import { useGetReverseGeocoding } from "../../api";
 import { LoadingIndicator } from "../loading-indicator/LoadingIndicator";
 
@@ -18,6 +19,7 @@ export const ReversedGeoLocatedText = ({
 	longitude,
 	onUndoLocationClick,
 }: ReversedGeoLocatedTextProps) => {
+	const { T } = useT();
 	const { data, isFetching, isSuccess } = useGetReverseGeocoding(
 		longitude,
 		latitude,
@@ -48,7 +50,7 @@ export const ReversedGeoLocatedText = ({
 
 	return (
 		<Button type="text" onClick={() => onUndoLocationClick()}>
-			Failed to locate you. Click here to choose your location manually.
+			{T("reversedGeoLocatedText.fallbackText")}
 		</Button>
 	);
 };

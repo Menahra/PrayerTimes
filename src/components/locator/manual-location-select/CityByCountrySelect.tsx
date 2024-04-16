@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useGetCitiesByCountry } from "../../../api";
-import { AutoComplete, Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { AutoComplete } from "antd";
+import { useT } from "talkr";
 import type { CityByCountryObject } from "../../../api/useGetCitiesByCountry";
 import { LoadingIndicator } from "../../loading-indicator/LoadingIndicator";
 
@@ -24,6 +24,7 @@ export const CityByCountrySelect = ({
 	value,
 	onCityByCountrySelect,
 }: CityByCountrySelectProps) => {
+	const { T } = useT();
 	const {
 		data: availableCitiesByCountry = [],
 		isFetching: isLoadingCountries,
@@ -57,9 +58,9 @@ export const CityByCountrySelect = ({
 	return (
 		<AutoComplete
 			value={value?.label}
-			notFoundContent="No matches found"
+			notFoundContent={T("cityByCountrySelect.noMatches")}
 			options={availableCitiesByCountryOptions}
-			placeholder="Select city"
+			placeholder={T("cityByCountrySelect.placeholder")}
 			onSearch={setCityByCountrySearchValue}
 			onChange={(newValue) => {
 				onCityByCountrySelect(

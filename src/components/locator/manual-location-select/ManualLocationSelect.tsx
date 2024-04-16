@@ -1,5 +1,6 @@
 import { AutoComplete, Flex } from "antd";
 import { useState } from "react";
+import { useT } from "talkr";
 import { CountrySelect, type Option } from "./CountrySelect";
 import {
 	CityByCountrySelect,
@@ -9,6 +10,7 @@ import {
 import { useStore } from "../../../store";
 
 export const ManualLocationSelect = () => {
+	const { T } = useT();
 	const { setCoordinates } = useStore();
 	const [selectedCountry, setSelectedCountry] = useState<Option | undefined>(
 		undefined,
@@ -36,7 +38,10 @@ export const ManualLocationSelect = () => {
 				onSelectCountry={setSelectedCountry}
 			/>
 			{!selectedCountry ? (
-				<AutoComplete disabled placeholder="Select city" />
+				<AutoComplete
+					disabled
+					placeholder={T("cityByCountrySelect.placeholder")}
+				/>
 			) : (
 				<CityByCountrySelect
 					countryCode={selectedCountry.value}
