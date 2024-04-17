@@ -102,9 +102,7 @@ describe("ReversedGeoLocatedText", () => {
 
 		const undoButton = getByRole("button");
 		expect(undoButton).toBeVisible();
-		expect(undoButton).toHaveTextContent(
-			"Failed to locate you. Click here to choose your location manually.",
-		);
+		expect(undoButton).toHaveTextContent("reversedGeoLocatedText.fallbackText");
 		await user.click(undoButton);
 		expect(undoFn).toHaveBeenCalledTimes(1);
 	});
