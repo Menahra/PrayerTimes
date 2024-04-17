@@ -1,8 +1,1 @@
-node_modules
-coverage
-dist
-.editorconfig
-.DS_Store
-
-# api keys
-.env
+.vscode
