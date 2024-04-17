@@ -1,6 +1,7 @@
+import { useMemo, useState } from "react";
 import { AutoComplete } from "antd";
 import { useGetCountries } from "../../../api";
-import { useMemo, useState } from "react";
+import { useT } from "talkr";
 import { LoadingIndicator } from "../../loading-indicator/LoadingIndicator";
 
 export type Option = {
@@ -19,6 +20,7 @@ export const CountrySelect = ({
 	onSelectCountry,
 	value,
 }: CountrySelectProps) => {
+	const { T } = useT();
 	const { data: availableCountries = [], isFetching: isLoadingCountries } =
 		useGetCountries();
 	const [countrySearchValue, setCountrySearchValue] = useState("");
@@ -48,9 +50,9 @@ export const CountrySelect = ({
 	return (
 		<AutoComplete
 			value={value?.label}
-			notFoundContent="No matches found"
+			notFoundContent={T("countrySelect.noMatches")}
 			options={availableCountryOptions}
-			placeholder="Select country"
+			placeholder={T("countrySelect.placeholder")}
 			onSearch={setCountrySearchValue}
 			onChange={(newValue) => {
 				onSelectCountry(

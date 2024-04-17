@@ -1,9 +1,20 @@
 import { render } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { TestQueryWrapper } from "../../tests/TestQueryWrapper";
 import { App } from "../App";
+import { server } from "../../tests/server";
+import { http } from "msw";
+import { getReverseGeocodingResponseMock } from "../api/mocks";
 
 describe("App", () => {
+	beforeEach(() => {
+		server.use(
+			http.get("*api.geoapify.com/v1/geocode/reverse*", () => {
+				return new Response(JSON.stringify(getReverseGeocodingResponseMock));
+			}),
+		);
+	});
+
 	global.navigator = {
 		...global.navigator,
 		geolocation: {

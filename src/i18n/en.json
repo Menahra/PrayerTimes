@@ -1,0 +1,13 @@
+{
+	"cityByCountrySelect": {
+		"noMatches": "No cities found",
+		"placeholder": "Please choose a city"
+	},
+	"countrySelect": {
+		"noMatches": "No country found",
+		"placeholder": "Please choose a country"
+	},
+	"reversedGeoLocatedText": {
+		"fallbackText": "Failed to locate you. Click here to choose your location manually"
+	}
+}
