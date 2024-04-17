@@ -2,6 +2,10 @@ name: coverageReport
 
 on: pull_request
 
+defaults:
+  run:
+    working-directory: ./client
+
 jobs:
   report-code-coverage:
     name: Report code coverage
